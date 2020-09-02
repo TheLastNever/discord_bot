@@ -1,5 +1,3 @@
-import logging
-from logging.handlers import RotatingFileHandler
 import random
 import sqlite3
 import traceback
@@ -16,13 +14,8 @@ import discord #
 from discord.ext import commands #
 import loadconfig #
 
-description = '''Expat's feature rich discord bot, developed with discord.py \n
-                 All the command are available at https://github.com/TheLastNever/discord_bot/blob/master/README.md: '''
-bot = commands.Bot(command_prefix='.',description=description)
+bot = commands.Bot(command_prefix= '-')
 
-
-def _currenttime():
-    return datetime.datetime.now(timezone('Asia/Istanbul')).strftime('%H:%M%S')
 
 async def _randomGame():
     while True:
@@ -72,6 +65,7 @@ async def on_message(message):
         response = random.choice(Sayings) 
         await message.channel.send(f'{message.author.name} öhöm öhöm ')
         await message.channel.send(response)
+    await bot.process_commands(message) # for commands to work
 @bot.event
 async def on_member_join(member):
     dm = f"{member.name} , {loadconfig.__greetmsg__}"
@@ -85,7 +79,7 @@ async def on_error(event, *args, **kwargs):
     if bot.dev:
         traceback.print_exc()
     else:
-        embed = discord.Embed(title=':x: Event Error', colour=0xe74c3c) #Red
+        embed = discord.Embed(title='Event Error', colour=0xe74c3c) #Red
         embed.add_field(name='Event', value=event)
         embed.description = '```py\n%s\n```' % traceback.format_exc()
         embed.timestamp = datetime.datetime.utcnow()
@@ -98,18 +92,20 @@ async def on_error(event, *args, **kwargs):
 async def on_command_error(ctx,error):
     send_help = (commands.MissingRequiredArgument, commands.BadArgument, commands.TooManyArguments, commands.UserInputError)
     if isinstance(error,commands.CommandNotFound):
-        await ctx.send("Nabıyon ln")
+        await ctx.send(f"Command Does not exist try -help !")
         #pass
     elif isinstance(error,send_help):
         _help = await send_cmd_help(ctx)
         await ctx.send(embed=_help)
-#ERROR HAKKINDA KULLANICIYA BİLGİ VERSİN DİYE
+
+#ERROR HELPER
 async def send_cmd_help(ctx):
     cmd = ctx.command
     em = discord.Embed(title=f'Usage: {ctx.prefix + cmd.signature}')
     em.color = discord.Color.green()
     em.description = cmd.help
     return em
+
 
 
 if __name__ == '__main__':

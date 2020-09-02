@@ -20,7 +20,7 @@ if os.path.isfile(configFile):
     except ImportError:
         __greetmsg__ = 'Naber'
 
-        
+print(__greetmsg__)        
 
 from config.games import __games__,__gamesTimer__
 from config.cogs import __cogs__
