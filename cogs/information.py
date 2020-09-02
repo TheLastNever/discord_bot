@@ -6,6 +6,7 @@ class information(commands.Cog):
         self._last_member = None
     
 
+## aliases koy commandlere böylece değişik yazsalar bile yazılabilir olsun##
 
 
 

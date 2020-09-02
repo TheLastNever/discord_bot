@@ -5,5 +5,11 @@ class admin(commands.Cog):
         self.bot = bot
         self._last_member = None
     
+
+
+
+
+
+    
 def setup(bot):
     bot.add_cog(admin(bot))

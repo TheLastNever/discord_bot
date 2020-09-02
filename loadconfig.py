@@ -15,6 +15,13 @@ if os.path.isfile(configFile):
         from config.config import __botserverid__
     except  ImportError:
         __botserverid__ = 0
+    try:
+        from config.config import __greetmsg__
+    except ImportError:
+        __greetmsg__ = 'Naber'
+
+        
 
 from config.games import __games__,__gamesTimer__
 from config.cogs import __cogs__
+from config.sayings import __SayingE__,__keyWordsE__
