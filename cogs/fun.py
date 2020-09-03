@@ -7,6 +7,7 @@ class fun(commands.Cog):
         self.bot = bot
         self._last_member = None
     
+
     # ROLL A DICE
     @commands.command(name='Roll', aliases =['roll','r'],help='Zar atar: zar sayısı ve zar yüzü belirlenmeli')
     async def roll(self,ctx, number_of_dice: int, number_of_sides: int):
@@ -18,7 +19,8 @@ class fun(commands.Cog):
                 for _ in range(number_of_dice)
             ]
             await ctx.send(', '.join(dice))
-        
+
+
     # Yazı tura
     @commands.command(name='Yazi_tura' , aliases =['yt','cf','coinflip'] , help = 'Yazı Tura atar : kaç adet para atılacağı yazılmalı')
     async def yaziTura(self,ctx, number_of_change:int):
@@ -30,11 +32,13 @@ class fun(commands.Cog):
                 str(random.choice(tura))
                 for _ in range(number_of_change)
             ]
+            channel = self.bot.get_channel(746686244368678912)
+            
+            print(channel)
+            await channel.send("naber")
             await ctx.send(' :: '.join(yazi))
+           
 
 
-
-
-    
 def setup(bot):
     bot.add_cog(fun(bot))

@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import commands
 from pytz import timezone
@@ -22,6 +23,18 @@ class information(commands.Cog):
   
         await ctx.send(embed=em)   
 
-## aliases koy commandlere böylece değişik yazsalar bile yazılabilir olsun##
+
+    @commands.command(name = 'suggest', help = 'Öneri Kanalına Bot Hakkında Önerilerinizi Gönderir')
+    async def suggestion(self,ctx,*args):
+        channel = bot.get_channel(746686244368678912)
+        #em = discord.Embed(color = discord.Color.red())
+        #em.title = 'DEĞERLİ ÖNERİ'
+        #em.set_author(name=ctx.author.name, icon_url="https://previews.123rf.com/images/bankrx/bankrx1703/bankrx170300012/73008857-grunge-red-suggestion-with-star-icon-round-rubber-seal-stamp.jpg")
+        #em.description = " ".join(args[:])
+        #print(em.title)
+        #await ctx.send(embed= em)
+        await channel.send("Naber")
+
+
 def setup(bot):
     bot.add_cog(information(bot))

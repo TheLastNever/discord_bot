@@ -4,8 +4,10 @@ class admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-    @commands.command(name = 'Create', aliases= ['create','cr','yarat'] help = 'Yeni Kanal Oluşturur')
-    @commands.has_role('admin')
+
+    @commands.command(name = 'Create', aliases= ['create','cr','yarat'], help = 'Yeni Kanal Oluşturur')
+    @commands.has_any_role("admin")
+    
     async def create_channel(self,ctx,channel_name : str):
         guild = ctx.guild
         existing_channel = discord.utils.get(guild.channels, name= channel_name)
@@ -16,9 +18,5 @@ class admin(commands.Cog):
 
 
 
-
-
-
-    
 def setup(bot):
     bot.add_cog(admin(bot))
