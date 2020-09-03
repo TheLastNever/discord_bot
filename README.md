@@ -8,7 +8,30 @@ The rest of the content explanations will be in Turkish, one day maybe English o
 # Commands List
 **Info:** Varsayılan "prefix" `.` dır.
 ### Generic ###
-Komut | Açıklama | Kullanım
+Komut ve Diğer Adları| Açıklama | Kullanım
 -----|------|-----
-`.help` | Komutlar hakkında bilgileri gösterir | `.help`,`.help <command name>`
+`-help` | Komutlar hakkında bilgileri gösterir | `.help`,`.help <command name>`
 
+### Admin  ###
+Komut ve Diğer Adları| Açıklama | Kullanım
+-----|------|-----
+`-Create`,`create`,`cr`,`yarat` | Yeni kanal oluşturma | `-Create <unique_channel_name>`
+
+### Fun ###
+Komut ve Diğer Adları| Açıklama | Kullanım
+-----|------|-----
+`-Roll`,`-r`,`-roll` | Zar Atar, Zar sayısı ve zar yüzü sayısı ayarlanabilir | `-Roll 10 20`
+
+`-Yazi_tura`,`-yt`,`-cf`,`coinflip` | Yazı Tura atar, kaç kez atılabileceği ayarlanılabilir |`-Yazi_tura <5>`
+
+
+### Information ###
+
+Komut ve Diğer Adları| Açıklama | Kullanım
+-----|------|-----
+`-Hakkinda`,`-hakkinda`,`about` | Bot içeriği ve sunucu kanalları hakkında açıklama yapar | `-Hakkinda`
+
+### Utilities ###
+Komut ve Diğer Adları| Açıklama | Kullanım
+-----|------|-----
+`-Öneri`,`suggestion`,`-suggest`,`-öner` | Belirlenmiş kanala kullanıcılar bot hakkında geliştirilmesi/düzeltilmesi için önerilerde belirtebilir | `-Öneri <Öneriyi yazınız>`

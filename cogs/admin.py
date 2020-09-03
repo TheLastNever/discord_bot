@@ -4,7 +4,7 @@ class admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-    @commands.command(name = 'Create', help = 'Yeni Kanal Oluşturur')
+    @commands.command(name = 'Create', aliases= ['create','cr','yarat'] help = 'Yeni Kanal Oluşturur')
     @commands.has_role('admin')
     async def create_channel(self,ctx,channel_name : str):
         guild = ctx.guild
@@ -13,7 +13,7 @@ class admin(commands.Cog):
             print(f'Creating a new channel: {channel_name}')
             await guild.create_text_channel(channel_name)
             await ctx.send("Yeni Kanal Kuruldu!")
-# ROLL A DICE
+
 
 
 
