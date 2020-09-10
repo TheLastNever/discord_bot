@@ -16,7 +16,6 @@ import loadconfig #
 
 bot = commands.Bot(command_prefix= '-')
 
-
 async def _randomGame():
     while True:
         guildCount = len(bot.guilds)
@@ -24,6 +23,9 @@ async def _randomGame():
         randomGame = random.choice(loadconfig.__games__)
         await bot.change_presence(activity=discord.Activity(type=randomGame[0],name = randomGame[1].format(guilds = guildCount , members= memberCount)))
         await asyncio.sleep(loadconfig.__gamesTimer__) 
+
+
+
 @bot.event
 async def on_ready():
     ''' To see the starting of the bot '''
@@ -47,6 +49,7 @@ async def on_ready():
     bot.startTime = time.time()
     bot.gamesLoop = asyncio.ensure_future(_randomGame())
    
+
 @bot.event
 async def on_message(message):
     Sayings = loadconfig.__SayingE__
@@ -66,6 +69,8 @@ async def on_message(message):
         await message.channel.send(f'{message.author.name} öhöm öhöm ')
         await message.channel.send(response)
     await bot.process_commands(message) # for commands to work
+
+
 @bot.event
 async def on_member_join(member):
     dm = f"{member.name} , {loadconfig.__greetmsg__}"
@@ -88,6 +93,7 @@ async def on_error(event, *args, **kwargs):
         except:
             pass
 
+
 @bot.event
 async def on_command_error(ctx,error):
     send_help = (commands.MissingRequiredArgument, commands.BadArgument, commands.TooManyArguments, commands.UserInputError)
@@ -98,14 +104,14 @@ async def on_command_error(ctx,error):
         _help = await send_cmd_help(ctx)
         await ctx.send(embed=_help)
 
+
 #ERROR HELPER
 async def send_cmd_help(ctx):
     cmd = ctx.command
-    em = discord.Embed(title=f'Usage: {ctx.prefix + cmd.signature}')
+    em = discord.Embed(title=f'Kullanım: {ctx.prefix + cmd.signature}')
     em.color = discord.Color.green()
     em.description = cmd.help
     return em
-
 
 
 if __name__ == '__main__':

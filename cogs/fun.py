@@ -12,7 +12,7 @@ class fun(commands.Cog):
     @commands.command(name='Roll', aliases =['roll','r'],help='Zar atar: zar sayısı ve zar yüzü belirlenmeli')
     async def roll(self,ctx, number_of_dice: int, number_of_sides: int):
         if number_of_dice > 20 :
-            await ctx.send("Daha küçük sayılar seç göttttttttt")
+            await ctx.send("Daha küçük sayılar seç ")
         else:
             dice = [
                 str(random.choice(range(1, number_of_sides + 1)))
@@ -26,7 +26,7 @@ class fun(commands.Cog):
     async def yaziTura(self,ctx, number_of_change:int):
         tura = ['YAZI', 'TURA']
         if number_of_change > 20 :
-            await ctx.send("20'den fazla bozukluğu götüne mi sokucan ?")
+            await ctx.send("20'den fazla bozukluğu ne yapacan ?")
         else:
             yazi = [
                 str(random.choice(tura))
